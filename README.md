@@ -9,6 +9,7 @@ This is a web application that allows users to order for Pizzas.Users have the o
 Francis Githae
 
 ## BDD
+
 - The user selects a preferred Pizza.
 - The user chooses the size of the pizza.
 - The user chooses the type of crust.
@@ -19,7 +20,6 @@ Francis Githae
 - The user has the option to have the pizza delivered.
 - If the user chooses to have it delivered, they are prompted to add a delivery location.
 - The user places the order and gets an alert that the order is successful.
-
 
 ## Technologies used
 
@@ -32,16 +32,21 @@ Francis Githae
 ## Setup
 
 To run this project in the local machine:
+
 1. Clone the repo.
 
-```git 
+```git
 git clone git@github.com:githaefrancis/pizzarana.git
-``` 
+```
+
 2. Open index.html on the browser.
+
+## Live link
+
+[Pizzarana](https://githaefrancis.github.io/pizzarana/)
 
 ## Contact Information
 
 mureithigithae@gmail.com
 
 ## License information
-
