@@ -8,3 +8,7 @@ header,.card-body {
 .active{
   border-bottom: 2px solid #d73600;
 }
+.btn-check.active{
+
+  background-color:#000000!important;
+}
