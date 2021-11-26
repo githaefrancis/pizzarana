@@ -58,7 +58,9 @@
             we have the pizza you need. <br />Sit back and let us pizza <br />
             your way.
           </p>
-          <button class="btn btn-danger btn-lg btn-outline-dark text-white">Order Now</button>
+          <button class="btn btn-danger btn-lg btn-outline-dark text-white">
+            Order Now
+          </button>
         </div>
         <div>
           <img class="img-fluid" src="./img/pizza.png" alt="" />
@@ -74,19 +76,99 @@
       </div>
     </header>
     <!-- order page -->
-    <div class="container d-lg-flex justify-content-lg-center bg-lg-danger rounded-3 ">
-
+    <div
+      class="container d-lg-flex justify-content-lg-center bg-danger rounded-3"
+    >
       <div class="card w-lg-50 my-lg-5 text-center border-success">
-        <img class="card-img-top" src="./img/pizza.png" alt="Card image cap">
+        <img class="card-img-top" src="./img/pizza.png" alt="Card image cap" />
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">Peperroni Pizza</h5>
+          <p class="card-text">Pepperoni Toppings</p>
+          <button
+            class="btn btn-success btn-lg text-white"
+            data-bs-toggle="modal"
+            data-bs-target="#order-modal"
+          >
+            Order Now
+          </button>
         </div>
       </div>
     </div>
 
-    <div class="footer my-5 text-center">&copy;2021 Pizzarana | Francis Githae</div>
+    <!-- order popup -->
+    <div
+      class="modal fade"
+      id="order-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="order-modal-title">Order</h5>
+            <button
+              type="button"
+              class="close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <form action="">
+                <!-- size radio -->
+                <div class="form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="pizza-size"
+                    id="large"
+                    disabled
+                  />
+                  <label class="form-check-label" for="flexRadioDisabled">
+                    Disabled radio
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="pizza-size"
+                    id="flexRadioCheckedDisabled"
+                    checked
+                    disabled
+                  />
+                  <label
+                    class="form-check-label"
+                    for="flexRadioCheckedDisabled"
+                  >
+                    Disabled checked radio
+                  </label>
+                </div>
+                <!-- size radio -->
+                <label for="" class="form-label">Name</label>
+                <input type="text" class="form-control" />
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer text-center justify-content-center">
+            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+            <button type="button" class="btn btn-success">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- order popup -->
+    <div class="footer my-5 text-center">
+      &copy;2021 Pizzarana | Francis Githae
+    </div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
       integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
