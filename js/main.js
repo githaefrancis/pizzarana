@@ -1,18 +1,18 @@
 // define variables
 
-let pizzaPrices = [
+const pizzaPrices = [
   { size: "large", price: 1000 },
   { size: "medium", price: 800 },
   { size: "small", price: 550 },
 ];
 
-let crustPrices = [
+const crustPrices = [
   { name: "crispy", price: { large: 150, medium: 120, small: 100 } },
   { name: "stuffed", price: { large: 180, medium: 150, small: 120 } },
   { name: "gluten-free", price: { large: 100, medium: 80, small: 65 } },
 ];
 
-let toppingPrices = [
+const toppingPrices = [
   { name: "pepperoni", price: { large: 60, medium: 50, small: 40 } },
   { name: "mozzarella", price: { large: 80, medium: 60, small: 40 } },
   { name: "chicken-bbq", price: { large: 100, medium: 80, small: 60 } },
@@ -26,6 +26,7 @@ function Order(size, toppings, crust, quantity) {
   this.crust = crust;
   this.quantity = quantity;
   this.total;
+  this.basePrice;
 }
 
 //method to update the size of pizza
@@ -47,8 +48,21 @@ Order.prototype.updateCrust = function (newCrust) {
   return this.crust;
 };
 
-Order.prototype.getTotal = function () {
-  return this.total;
+Order.prototype.getTotal = function (prices) {
+  console.log(prices.length);
+  for(i=0;i<prices.length;i++){
+    if(prices[i].size===this.size){
+      this.basePrice=prices[i].price;
+      break;
+    }
+    else{
+      this.basePrice=0;
+    }
+  }
+  
+
+  console.log(this.basePrice);
+  return this.basePrice;
 };
 let cart = [];
 let orderItem;
@@ -167,5 +181,6 @@ $(() => {
     orderItemCount += 1;
     orderItem = new Order("large", [], "crispy", 1);
     console.log(orderItem);
+    console.log(orderItem.getTotal(pizzaPrices));
   });
 });
