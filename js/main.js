@@ -39,7 +39,12 @@ let getToppingsPrices = (size) => {
 };
 
 //get crust prices
-
+let getCrustPrices = (size) => {
+  let crustPricesPerSize = crustPrices.map((item) => {
+    return item.price[size];
+  });
+  return crustPricesPerSize;
+};
 // display toppings prices
 
 let toggleToppingPrices = (checked) => {
@@ -58,12 +63,30 @@ let toggleToppingPrices = (checked) => {
   }
 };
 
+// display crust prices
+let toggleCrustPrices = (checked) => {
+  let activeSize = checked[0].value;
+  let activeCrustPrices = getCrustPrices(activeSize);
+  console.log(activeCrustPrices);
+  for(i=0;i<3;i++){
+    crustInputId=$("[name=crustradio]");
+    console.log(crustInputId);
+    console.log(crustInputId[i].id);
+    crustPriceSpanId="#" + crustInputId[i].id + "-price";
+    console.log(crustPriceSpanId);
+    $(crustPriceSpanId).text(activeCrustPrices[i]);
+  }
+};
 // set default toppings prices
 toggleToppingPrices($("[name=sizeradio]"));
+
+//set default crust prices
+toggleCrustPrices($("[name=sizeradio]"));
 //event listener for size toggle
 $("[name=sizeradio]").on("change", () => {
-  let activeToppings = $("[name=sizeradio]:checked");
-  toggleToppingPrices(activeToppings);
+  let activeSize = $("[name=sizeradio]:checked");
+  toggleToppingPrices(activeSize);
+  toggleCrustPrices(activeSize);
 });
 //get checkbox values
 const getCheckboxValues = (selectedCheckboxes) => {
