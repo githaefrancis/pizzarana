@@ -14,10 +14,10 @@ const crustPrices = [
 
 const toppingPrices = [
   { name: "pepperoni", price: { large: 60, medium: 50, small: 40 } },
-  { name: "mozzarella", price: { large: 80, medium: 60, small: 40 } },
   { name: "chicken-bbq", price: { large: 100, medium: 80, small: 60 } },
   { name: "cheese", price: { large: 60, medium: 50, small: 40 } },
   { name: "Pineapples", price: { large: 60, medium: 50, small: 40 } },
+  { name: "mozzarella", price: { large: 80, medium: 60, small: 40 } },
 ];
 
 function Order(size, toppings, crust, quantity) {
@@ -27,6 +27,8 @@ function Order(size, toppings, crust, quantity) {
   this.quantity = quantity;
   this.total;
   this.basePrice;
+  this.toppingsTotal = 0;
+  this.crustTotal=0;
 }
 
 //method to update the size of pizza
@@ -48,22 +50,55 @@ Order.prototype.updateCrust = function (newCrust) {
   return this.crust;
 };
 
-Order.prototype.getTotal = function (prices) {
-  console.log(prices.length);
-  for(i=0;i<prices.length;i++){
-    if(prices[i].size===this.size){
-      this.basePrice=prices[i].price;
+Order.prototype.getTotal = function () {
+  this.getToppingsTotal();
+  this.getCrustTotal();
+  console.log(pizzaPrices.length);
+  for (i = 0; i < pizzaPrices.length; i++) {
+    if (pizzaPrices[i].size === this.size) {
+      this.basePrice = pizzaPrices[i].price;
       break;
-    }
-    else{
-      this.basePrice=0;
+    } else {
+      this.basePrice = 0;
     }
   }
-  
-
-  console.log(this.basePrice);
-  return this.basePrice;
+  this.total = this.basePrice + this.toppingsTotal + this.crustTotal;
+  console.log(this.total);
+  return this.total;
 };
+Order.prototype.getToppingsTotal = function () {
+  console.log(typeof this.toppings);
+  if (this.toppings.length < 1) {
+    console.log("no toppings found");
+  } else {
+    totalPrice = 0;
+    for (i = 0; i < this.toppings.length; i++) {
+      for (j = 0; j < toppingPrices.length; j++) {
+        if (toppingPrices[j].name === this.toppings[i]) {
+          totalPrice += toppingPrices[j].price[this.size];
+          break;
+        }
+      }
+    }
+    this.toppingsTotal = totalPrice;
+    // this.getTotal();
+    console.log(totalPrice);
+    return totalPrice;
+  }
+  console.log(this.toppings);
+};
+
+Order.prototype.getCrustTotal=function(){
+let crustPrice=0;
+for(i=0;i<crustPrices.length;i++){
+  if(crustPrices[i].name===this.crust){
+    crustPrice=crustPrices[i].price[this.size];
+  }
+}
+console.log(crustPrice);
+this.crustTotal=crustPrice;
+return crustPrice;
+}
 let cart = [];
 let orderItem;
 
@@ -179,8 +214,10 @@ $(() => {
   let orderItemCount = 0;
   $("#order-now").on("click", () => {
     orderItemCount += 1;
-    orderItem = new Order("large", [], "crispy", 1);
+    orderItem = new Order("large", ["pepperoni", "chicken-bbq"], "crispy", 1);
     console.log(orderItem);
-    console.log(orderItem.getTotal(pizzaPrices));
+    console.log(orderItem.getTotal());
+    orderItem.getToppingsTotal();
+    orderItem.getCrustTotal();
   });
 });
