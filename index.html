@@ -101,7 +101,7 @@
       id="order-modal"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
+      aria-labelledby="order-modal-title"
       aria-hidden="true"
     >
       <div
@@ -113,7 +113,7 @@
             <h5 class="modal-title" id="order-modal-title">Order</h5>
             <button
               type="button"
-              class="close"
+              class="close border-0 text-danger"
               data-bs-dismiss="modal"
               aria-label="Close"
             >
@@ -138,7 +138,7 @@
                     autocomplete="off"
                     checked
                   />
-                  <label class="btn btn-outline-primary btn-size" for="large"
+                  <label class="btn btn-outline-success fw-bold" for="large"
                     >Large | Ksh 1200</label
                   >
 
@@ -149,7 +149,7 @@
                     id="medium"
                     autocomplete="off"
                   />
-                  <label class="btn btn-outline-primary" for="medium"
+                  <label class="btn btn-outline-success fw-bold" for="medium"
                     >Medium | Ksh 1000</label
                   >
 
@@ -160,7 +160,7 @@
                     id="small"
                     autocomplete="off"
                   />
-                  <label class="btn btn-outline-primary btn-size" for="small"
+                  <label class="btn btn-outline-success  fw-bold" for="small"
                     >Small | Ksh 850</label
                   >
                 </div>
@@ -173,24 +173,26 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
+                    value="chicken-bbq"
+                    id="pepperoni"
                   />
-                  <label class="form-check-label" for="flexCheckDefault">
+                  <label class="form-check-label" for="pepperoni">
                     Pepperoni
                   </label>
+                  <span class="float-end">@Ksh 100</span>
                 </div>
                 <div class="form-check">
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="flexCheckChecked"
+                    value="chicken-bbq"
+                    id="chicken-bbq"
                     checked
                   />
-                  <label class="form-check-label" for="flexCheckChecked">
+                  <label class="form-check-label" for="chicken-bbq">
                     Chicken Bbq
                   </label>
+                  <span class="float-end">@Ksh 100</span>
                 </div>
                 <!-- toppings checkbox -->
                 <!-- crusts checkbox -->
@@ -199,34 +201,51 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
+                    value="crispy"
+                    id="chrispy"
                   />
                   <label class="form-check-label" for="flexCheckDefault">
-                    Pepperoni
+                    Crispy
+                  </label>
+                  <span class="float-end">@Ksh 100</span>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="stuffed"
+                    id="stuffed"
+                    checked
+                  />
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Stuffed
                   </label>
                 </div>
                 <div class="form-check">
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="flexCheckChecked"
-                    checked
+                    value="gluten-free"
+                    id="flexCheckDefault"
                   />
-                  <label class="form-check-label" for="flexCheckChecked">
-                    Chicken Bbq
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Gluten-free
                   </label>
                 </div>
                 <!-- crusts checkbox -->
-                <label for="" class="form-label">Name</label>
-                <input type="text" class="form-control" />
+                <!-- Quantity -->
+                <h5>Quantity</h5>
+                <div class="row d-flex justify-content-center">
+                  - <input type="number" class="form-control w-25" /> +
+                </div>
+                <!-- Quantity -->
+
               </form>
             </div>
           </div>
           <div class="modal-footer text-center justify-content-center">
             <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-            <button type="button" class="btn btn-success">Add to Cart</button>
+            <button type="button" class="btn btn-success">Add to Cart <span class="badge rounded-pill">Ksh 0</span></button>
           </div>
         </div>
       </div>
