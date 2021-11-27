@@ -96,6 +96,19 @@ const getCheckboxValues = (selectedCheckboxes) => {
   }
   return valueArray;
 };
+
+//Increase the quantity
+$("#add").on("click",()=>{
+  let quantityInput=$("#qty")
+  let quantity=parseInt(quantityInput.val()) + 1;
+  quantityInput.val(quantity);
+  console.log(quantity);
+
+})
+//Reduce quantity
+
+
+
 //Receive form input
 
 $("#form-order").submit((e) => {
@@ -106,6 +119,8 @@ $("#form-order").submit((e) => {
   let size = $("[name=sizeradio]:checked").val();
   toppingsSelection = getCheckboxValues(toppings);
   console.log(toppingsSelection);
+  console.log(crust);
+  console.log(size);
 });
 //dom ready
 $(() => {

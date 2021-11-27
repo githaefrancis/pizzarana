@@ -141,8 +141,8 @@
                     checked
                   />
                   <label class="btn btn-outline-success fw-bold" for="large"
-                    >Large | Ksh <span id="large-price"></span></label
-                  >
+                    >Large | Ksh <span id="large-price"></span
+                  ></label>
 
                   <input
                     type="radio"
@@ -153,8 +153,8 @@
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-success fw-bold" for="medium"
-                    >Medium | Ksh <span id="medium-price"></span></label
-                  >
+                    >Medium | Ksh <span id="medium-price"></span
+                  ></label>
 
                   <input
                     type="radio"
@@ -165,8 +165,8 @@
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-success fw-bold" for="small"
-                    >Small | Ksh <span id="small-price"></span></label
-                  >
+                    >Small | Ksh <span id="small-price"></span
+                  ></label>
                 </div>
                 <br />
                 <!-- size radio -->
@@ -184,8 +184,8 @@
                     Pepperoni
                   </label>
                   <span class="float-end"
-                    >@Ksh <span id="pepperoni-price"></span></span
-                  >
+                    >@Ksh <span id="pepperoni-price"></span
+                  ></span>
                 </div>
                 <div class="form-check">
                   <input
@@ -198,8 +198,8 @@
                     Chicken Bbq
                   </label>
                   <span class="float-end"
-                    >@Ksh <span id="chicken-bbq-price"> </span></span
-                  >
+                    >@Ksh <span id="chicken-bbq-price"> </span
+                  ></span>
                 </div>
                 <div class="form-check">
                   <input
@@ -210,8 +210,8 @@
                   />
                   <label class="form-check-label" for="cheese"> Cheese </label>
                   <span class="float-end"
-                    >@Ksh <span id="cheese-price"> </span></span
-                  >
+                    >@Ksh <span id="cheese-price"> </span
+                  ></span>
                 </div>
                 <div class="form-check">
                   <input
@@ -224,8 +224,8 @@
                     >Pineapples
                   </label>
                   <span class="float-end"
-                    >@Ksh <span id="pineapples-price"> </span></span
-                  >
+                    >@Ksh <span id="pineapples-price"> </span
+                  ></span>
                 </div>
                 <div class="form-check">
                   <input
@@ -238,8 +238,8 @@
                     Mozzarella
                   </label>
                   <span class="float-end"
-                    >@Ksh <span id="mozzarella-price"></span></span
-                  >
+                    >@Ksh <span id="mozzarella-price"></span
+                  ></span>
                 </div>
                 <!-- toppings checkbox -->
 
@@ -296,7 +296,8 @@
                 <h5>Quantity</h5>
                 <div class="d-flex justify-content-center align-items-center">
                   <i
-                    class="fa fa-minus-square fa-disabled"
+                    class="fa fa-minus-square"
+                    id="minus"
                     aria-hidden="true"
                   ></i>
 
@@ -305,6 +306,7 @@
                     id="qty"
                     class="form-control w-25 mx-3 text-center"
                     value="1"
+                    disabled
                   />
 
                   <i class="fa fa-plus-square" id="add" aria-hidden="true"></i>
