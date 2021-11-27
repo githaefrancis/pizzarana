@@ -25,6 +25,39 @@ function Order(size, toppings, crust) {
   this.crust = crust;
 }
 
+//display price values
+$("#large-price").text(pizzaPrices[0].price);
+$("#medium-price").text(pizzaPrices[0].price);
+$("#small-price").text(pizzaPrices[0].price);
+
+//get toppings prices
+let getToppingsPrices = (size) => {
+  let toppingPricesPerSize = toppingPrices.map((item) => {
+    return item.price[size];
+  });
+  console.log(toppingPricesPerSize);
+};
+
+// display toppings prices
+
+let toggleToppingPrices = (checked) => {
+  let activeSize = checked[0].value;
+  let activeToppingPrices = getToppingsPrices(activeSize);
+  let toppingsPricesSpans = $(".toppings-check span span");
+  console.log(toppingsPricesSpans);
+  for (i = 0; toppingsCheckboxes.length; i++) {
+    toppingsId = toppingsCheckboxes[i].id;
+    // toppingsPrice=toppingsPrice[]
+    toppingsCheckboxes[i].text = activeToppingPrices[i];
+  }
+};
+
+//event listener for size toggle
+$("[name=sizeradio]").on("change", () => {
+  console.log("size changed");
+  let activeToppings = $("[name=sizeradio]:checked");
+  toggleToppingPrices(activeToppings);
+});
 //get checkbox values
 const getCheckboxValues = (selectedCheckboxes) => {
   let valueArray = [];
@@ -39,7 +72,8 @@ $("#form-order").submit((e) => {
   e.preventDefault();
   //get toppings selection
   let toppings = $(".toppings-check:checked");
-  let crusts=$("")
+  let crust = $("[name=crustradio]:checked").val();
+  let size = $("[name=sizeradio]:checked").val();
   toppingsSelection = getCheckboxValues(toppings);
   console.log(toppingsSelection);
 });

@@ -136,11 +136,12 @@
                     class="btn-check"
                     name="sizeradio"
                     id="large"
+                    value="large"
                     autocomplete="off"
                     checked
                   />
                   <label class="btn btn-outline-success fw-bold" for="large"
-                    >Large | Ksh 1200</label
+                    >Large | Ksh <span id="large-price"></span></label
                   >
 
                   <input
@@ -148,10 +149,11 @@
                     class="btn-check"
                     name="sizeradio"
                     id="medium"
+                    value="medium"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-success fw-bold" for="medium"
-                    >Medium | Ksh 1000</label
+                    >Medium | Ksh <span id="medium-price"></span></label
                   >
 
                   <input
@@ -159,10 +161,11 @@
                     class="btn-check"
                     name="sizeradio"
                     id="small"
+                    value="small"
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-success fw-bold" for="small"
-                    >Small | Ksh 850</label
+                    >Small | Ksh <span id="small-price"></span></label
                   >
                 </div>
                 <br />
@@ -269,7 +272,7 @@
                     autocomplete="off"
                   />
                   <label class="btn btn-outline-success fw-bold" for="stuffed"
-                    >Stuffed | Ksh <span id="stuffed-price" class="badge rounded-pill">100</span></label
+                    >Stuffed | Ksh <span id="stuffed-price">100</span></label
                   >
 
                   <input
@@ -283,7 +286,8 @@
                   <label
                     class="btn btn-outline-success fw-bold text-center"
                     for="glutten-free"
-                    >Glutten-Free | Ksh <span id="glutten-free-price">100</span></label
+                    >Glutten-Free | Ksh
+                    <span id="glutten-free-price">100</span></label
                   >
                 </div>
                 <br />
