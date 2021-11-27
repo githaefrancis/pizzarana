@@ -25,13 +25,24 @@ function Order(size, toppings, crust) {
   this.crust = crust;
 }
 
-
+//get checkbox values
+const getCheckboxValues = (selectedCheckboxes) => {
+  let valueArray = [];
+  for (i = 0; i < selectedCheckboxes.length; i++) {
+    valueArray.push(selectedCheckboxes[i].value);
+  }
+  return valueArray;
+};
 //Receive form input
 
-$('#form-order').submit((e)=>{
+$("#form-order").submit((e) => {
   e.preventDefault();
-  console.log("item added");
-})
+  //get toppings selection
+  let toppings = $(".toppings-check:checked");
+  let crusts=$("")
+  toppingsSelection = getCheckboxValues(toppings);
+  console.log(toppingsSelection);
+});
 //dom ready
 $(() => {
   $("header").height($(window).height());

@@ -217,7 +217,9 @@
                     value="pineapples"
                     id="pineapples"
                   />
-                  <label class="form-check-label" for="pineapples"> </label>
+                  <label class="form-check-label" for="pineapples"
+                    >Pineapples
+                  </label>
                   <span class="float-end"
                     >@Ksh <span id="pineapples-price"> 100</span></span
                   >
@@ -237,50 +239,55 @@
                   >
                 </div>
                 <!-- toppings checkbox -->
-                <!-- crusts checkbox -->
-                <h5>Crusts</h5>
-                <div class="form-check">
+
+                <!-- crusts radio -->
+                <h5>Crust</h5>
+                <div
+                  class="btn-group"
+                  role="group"
+                  aria-label="Basic radio toggle button group"
+                >
                   <input
-                    class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    class="btn-check"
+                    name="crustradio"
+                    id="crispy"
                     value="crispy"
-                    id="chrispy"
-                  />
-                  <label class="form-check-label" for="crispy"> Crispy </label>
-                  <span class="float-end"
-                    >@Ksh <span id="crispy-price"> 100</span></span
-                  >
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="stuffed"
-                    id="stuffed"
+                    autocomplete="off"
                     checked
                   />
-                  <label class="form-check-label" for="stuffed">
-                    Stuffed
-                  </label>
-                  <span class="float-end"
-                    >@Ksh <span id="stuffed-price"> 100</span></span
+                  <label class="btn btn-outline-success fw-bold" for="crispy"
+                    >Crispy | Ksh <span id="crispy-price">100</span></label
                   >
-                </div>
-                <div class="form-check">
+
                   <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="gluten-free"
-                    id="glutten-free"
+                    type="radio"
+                    class="btn-check"
+                    name="crustradio"
+                    id="stuffed"
+                    value="stuffed"
+                    autocomplete="off"
                   />
-                  <label class="form-check-label" for="glutten-free">
-                    Gluten-free
-                  </label>
-                  <span class="float-end"
-                    >@Ksh <span id="gluten-free-price"> 100</span></span
+                  <label class="btn btn-outline-success fw-bold" for="stuffed"
+                    >Stuffed | Ksh <span id="stuffed-price" class="badge rounded-pill">100</span></label
+                  >
+
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="crustradio"
+                    id="glutten-free"
+                    value="glutten-free"
+                    autocomplete="off"
+                  />
+                  <label
+                    class="btn btn-outline-success fw-bold text-center"
+                    for="glutten-free"
+                    >Glutten-Free | Ksh <span id="glutten-free-price">100</span></label
                   >
                 </div>
-                <!-- crusts checkbox -->
+                <br />
+                <!-- crusts radio -->
                 <!-- Quantity -->
                 <h5>Quantity</h5>
                 <div class="d-flex justify-content-center align-items-center">
