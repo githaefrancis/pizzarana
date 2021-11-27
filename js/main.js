@@ -25,6 +25,13 @@ function Order(size, toppings, crust) {
   this.crust = crust;
 }
 
+
+//Receive form input
+
+$('#form-order').submit((e)=>{
+  e.preventDefault();
+  console.log("item added");
+})
 //dom ready
 $(() => {
   $("header").height($(window).height());

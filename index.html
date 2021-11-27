@@ -172,7 +172,7 @@
                 <h5>Toppings</h5>
                 <div class="form-check">
                   <input
-                    class="form-check-input"
+                    class="form-check-input toppings-check"
                     type="checkbox"
                     value="pepperoni"
                     id="pepperoni"
@@ -186,11 +186,10 @@
                 </div>
                 <div class="form-check">
                   <input
-                    class="form-check-input"
+                    class="form-check-input toppings-check"
                     type="checkbox"
                     value="chicken-bbq"
                     id="chicken-bbq"
-                    checked
                   />
                   <label class="form-check-label" for="chicken-bbq">
                     Chicken Bbq
@@ -201,41 +200,34 @@
                 </div>
                 <div class="form-check">
                   <input
-                    class="form-check-input"
+                    class="form-check-input toppings-check"
                     type="checkbox"
                     value="cheese"
                     id="cheese"
-                    checked
                   />
-                  <label class="form-check-label" for="cheese">
-                    Cheese
-                  </label>
+                  <label class="form-check-label" for="cheese"> Cheese </label>
                   <span class="float-end"
                     >@Ksh <span id="cheese-price"> 100</span></span
                   >
                 </div>
                 <div class="form-check">
                   <input
-                    class="form-check-input"
+                    class="form-check-input toppings-check"
                     type="checkbox"
                     value="pineapples"
                     id="pineapples"
-                    checked
                   />
-                  <label class="form-check-label" for="pineapples">
-                    Pineapples
-                  </label>
+                  <label class="form-check-label" for="pineapples"> </label>
                   <span class="float-end"
                     >@Ksh <span id="pineapples-price"> 100</span></span
                   >
                 </div>
                 <div class="form-check">
                   <input
-                    class="form-check-input"
+                    class="form-check-input toppings-check"
                     type="checkbox"
                     value="mozzarella"
                     id="mozzarella"
-                    checked
                   />
                   <label class="form-check-label" for="mozzarella">
                     Mozzarella
@@ -291,13 +283,19 @@
                 <!-- crusts checkbox -->
                 <!-- Quantity -->
                 <h5>Quantity</h5>
-                <div
-                  class=" d-flex justify-content-center align-items-center"
-                >
-                  <i class="fa fa-minus-square fa-disabled" aria-hidden="true"></i>
-                  
-                    <input type="number" id="qty" class="form-control w-25 mx-3 text-center" value=1 />
-                
+                <div class="d-flex justify-content-center align-items-center">
+                  <i
+                    class="fa fa-minus-square fa-disabled"
+                    aria-hidden="true"
+                  ></i>
+
+                  <input
+                    type="number"
+                    id="qty"
+                    class="form-control w-25 mx-3 text-center"
+                    value="1"
+                  />
+
                   <i class="fa fa-plus-square" id="add" aria-hidden="true"></i>
                 </div>
                 <!-- Quantity -->
