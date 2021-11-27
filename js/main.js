@@ -27,34 +27,41 @@ function Order(size, toppings, crust) {
 
 //display price values
 $("#large-price").text(pizzaPrices[0].price);
-$("#medium-price").text(pizzaPrices[0].price);
-$("#small-price").text(pizzaPrices[0].price);
+$("#medium-price").text(pizzaPrices[1].price);
+$("#small-price").text(pizzaPrices[2].price);
 
 //get toppings prices
 let getToppingsPrices = (size) => {
   let toppingPricesPerSize = toppingPrices.map((item) => {
     return item.price[size];
   });
-  console.log(toppingPricesPerSize);
+  return toppingPricesPerSize;
 };
+
+//get crust prices
 
 // display toppings prices
 
 let toggleToppingPrices = (checked) => {
   let activeSize = checked[0].value;
   let activeToppingPrices = getToppingsPrices(activeSize);
-  let toppingsPricesSpans = $(".toppings-check span span");
-  console.log(toppingsPricesSpans);
-  for (i = 0; toppingsCheckboxes.length; i++) {
+  // console.log(activeToppingPrices);
+  let toppingsCheckboxes = $(".toppings-check");
+
+  // console.log(toppingsPricesSpans);
+  for (i = 0; i < toppingsCheckboxes.length; i++) {
     toppingsId = toppingsCheckboxes[i].id;
+    priceSpanId = "#" + toppingsId + "-price";
+    $(priceSpanId).text(activeToppingPrices[i]);
     // toppingsPrice=toppingsPrice[]
-    toppingsCheckboxes[i].text = activeToppingPrices[i];
+    // toppingsCheckboxes[i].text = activeToppingPrices[i];
   }
 };
 
+// set default toppings prices
+toggleToppingPrices($("[name=sizeradio]"));
 //event listener for size toggle
 $("[name=sizeradio]").on("change", () => {
-  console.log("size changed");
   let activeToppings = $("[name=sizeradio]:checked");
   toggleToppingPrices(activeToppings);
 });
