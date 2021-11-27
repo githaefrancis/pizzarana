@@ -21,13 +21,14 @@ Francis Githae
 - If the user chooses to have it delivered, they are prompted to add a delivery location.
 - The user places the order and gets an alert that the order is successful.
 
-## Technologies used
+## Tools and Technologies used
 
 -HTML
 -javascript
 -CSS
 -JQuery
 -Bootstrap
+-Font Awesome v4.7.0
 
 ## Setup
 
