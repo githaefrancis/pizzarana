@@ -11,7 +11,13 @@ let crustPrices = [
   { name: "gluten-free", price: { large: 100, medium: 80, small: 65 } },
 ];
 
-let crustPrices = [];
+let toppingPrices = [
+  { name: "pepperoni", price: { large: 60, medium: 50, small: 40 } },
+  { name: "mozzarella", price: { large: 80, medium: 60, small: 40 } },
+  { name: "chicken-bbq", price: { large: 100, medium: 80, small: 60 } },
+  { name: "cheese", price: { large: 60, medium: 50, small: 40 } },
+  { name: "Pineapples", price: { large: 60, medium: 50, small: 40 } },
+];
 
 function Order(size, toppings, crust) {
   this.size = size;
