@@ -12,7 +12,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/cart.css" />
     <script src="https://use.fontawesome.com/cdf8dc5fd3.js"></script>
   </head>
   <body>
@@ -56,37 +56,74 @@
         </div>
       </nav>
       <!-- navbar -->
-          <!-- cart items -->
-    
-          <div class="row container cart">
-            <div class="col-lg-8 col-sm-12">
-              <div class="card border-0">
-                <h2 class="mx-lg-5">My Cart</h2>
-                <hr class="mx-lg-5 mx-sm-1" />
-                <div class="cart-body">
-                  <div class="item row">
-                    <div class="col-lg-3 mx-lg-5 col-sm-3">Item1</div>
-                    <div class="col-lg-5 col-sm-6">
-                      <div class="title">
-                        <p>Pepperoni Pizza</p>
-                        <ul>
-                          <li>Mushrooms</li>
-                          <li>Pineapples</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-12 float-end">Ksh 1310</div>
+      <!-- cart items -->
+      <div class="container">
+        <div class="cart-view">
+          <div class="card border-0">
+            <h2 class="mx-lg-5">My Cart</h2>
+            <hr class="mx-lg-5 mx-sm-1" />
+            <div class="cart-body">
+              <div class="item row">
+                <div class="col-lg-3 mx-lg-5 col-sm-3">Item1</div>
+                <div class="col-lg-5 col-sm-6">
+                  <div class="title">
+                    <p>Pepperoni Pizza</p>
+                    <ul>
+                      <li>Mushrooms</li>
+                      <li>Pineapples</li>
+                    </ul>
                   </div>
-    
-                  <div class="row sub-total">
-                    <span class="text-right">1310</span>
+                </div>
+                <div class="col-lg-2 col-sm-12">
+                  <h3 class="float-end">Ksh 1310</h3>
+                </div>
+              </div>
+
+              <div class="row sub-total">
+                <span class="text-right">1310</span>
+              </div>
+            </div>
+          </div>
+          <div class="cart-totals">
+            <hr />
+            <div class="card">
+              <div class="card-title">
+                <div class="row">
+                  <div class="col-lg-8 mx-lg-5">
+                    <h2>Sub-Total</h2>
+                  </div>
+                  <div class="col-lg-2">
+                    <span class="float-end"><h3>Ksh 1310</h3></span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-8 mx-lg-5">
+                    <h2>
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id="delivery"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="delivery"
+                          >Delivery</label
+                        >
+                      </div>
+                    </h2>
+                  </div>
+                  <div class="col-lg-2">
+                    <span class="float-end"><h3>Ksh 150</h3></span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        
-        <!-- cart items -->
+        </div>
+      </div>
+      <!-- cart items -->
     </header>
 
     <div class="footer my-5 text-center">
