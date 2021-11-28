@@ -16,7 +16,7 @@ const toppingPrices = [
   { name: "pepperoni", price: { large: 60, medium: 50, small: 40 } },
   { name: "chicken-bbq", price: { large: 100, medium: 80, small: 60 } },
   { name: "cheese", price: { large: 60, medium: 50, small: 40 } },
-  { name: "Pineapples", price: { large: 60, medium: 50, small: 40 } },
+  { name: "pineapples", price: { large: 60, medium: 50, small: 40 } },
   { name: "mozzarella", price: { large: 80, medium: 60, small: 40 } },
 ];
 
@@ -28,7 +28,7 @@ function Order(size, toppings, crust, quantity) {
   this.total;
   this.basePrice;
   this.toppingsTotal = 0;
-  this.crustTotal=0;
+  this.crustTotal = 0;
 }
 
 //method to update the size of pizza
@@ -62,7 +62,8 @@ Order.prototype.getTotal = function () {
       this.basePrice = 0;
     }
   }
-  this.total = (this.basePrice + this.toppingsTotal + this.crustTotal) * this.quantity;
+  this.total =
+    (this.basePrice + this.toppingsTotal + this.crustTotal) * this.quantity;
   console.log(this.total);
   return this.total;
 };
@@ -88,17 +89,17 @@ Order.prototype.getToppingsTotal = function () {
   console.log(this.toppings);
 };
 
-Order.prototype.getCrustTotal=function(){
-let crustPrice=0;
-for(i=0;i<crustPrices.length;i++){
-  if(crustPrices[i].name===this.crust){
-    crustPrice=crustPrices[i].price[this.size];
+Order.prototype.getCrustTotal = function () {
+  let crustPrice = 0;
+  for (i = 0; i < crustPrices.length; i++) {
+    if (crustPrices[i].name === this.crust) {
+      crustPrice = crustPrices[i].price[this.size];
+    }
   }
-}
-console.log(crustPrice);
-this.crustTotal=crustPrice;
-return crustPrice;
-}
+  console.log(crustPrice);
+  this.crustTotal = crustPrice;
+  return crustPrice;
+};
 let cart = [];
 let orderItem;
 
@@ -167,6 +168,18 @@ $(() => {
     let activeSize = $("[name=sizeradio]:checked");
     toggleToppingPrices(activeSize);
     toggleCrustPrices(activeSize);
+    console.log(activeSize[0].value);
+    orderItem.updateSize(activeSize[0].value);
+    orderItem.getTotal();
+    $("#total").text(orderItem.getTotal());
+  });
+
+  //event listener for change in crust type
+  $("[name=crustradio]").on("change", () => {
+    let activeCrust = $("[name=crustradio]:checked");
+    orderItem.updateCrust(activeCrust[0].value);
+    orderItem.getTotal();
+    $("#total").text(orderItem.getTotal());
   });
   //get checkbox values
   const getCheckboxValues = (selectedCheckboxes) => {
@@ -203,13 +216,15 @@ $(() => {
 
   //Receive form input
 
-  $("#form-order").submit((e) => {
-    e.preventDefault();
+  $(".toppings-check").on("change", (e) => {
+    // e.preventDefault();
     //get toppings selection
     let toppings = $(".toppings-check:checked");
     let crust = $("[name=crustradio]:checked").val();
     let size = $("[name=sizeradio]:checked").val();
     toppingsSelection = getCheckboxValues(toppings);
+    orderItem.updateToppings(toppingsSelection);
+    $("#total").text(orderItem.getTotal());
     console.log(toppingsSelection);
     console.log(crust);
     console.log(size);
@@ -227,8 +242,10 @@ $(() => {
   });
 
   //update the price per the number of pizzas
-  $("#qty").on("change",()=>{
+  $("#qty").on("change", () => {
     console.log($("#qty").text());
   });
 
+  // Update order total displayed
+  const updateOrderTotalElement = () => {};
 });
