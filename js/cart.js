@@ -16,6 +16,15 @@ $(() => {
       return grandTotal;
     }
   };
+  //Display toppings
+  let getToppings = (toppings) => {
+    let li="";
+    for (k = 0; k < toppings.length; k++) {
+      li += `<li class="d-inline-block px-1">${toppings[k]}</li>`;
+      console.log(li);
+    }
+    return li;
+  };
   // let singleCartItem;
   if (shoppingCart !== null) {
     $("#items-count").text(shoppingCart.length);
@@ -40,8 +49,7 @@ $(() => {
       }</span></p>
                     <p class="fw-bold"><em>Toppings</em></p>
                     <ul id="toppings-list" type="square">
-                      <li class="d-inline-block px-1">Mushrooms</li>
-                      <li class="d-inline-block px-1">Pineapples</li>
+                      ${getToppings(shoppingCart[i].toppings)}
                     </ul>
                   </div>
                 </div>
@@ -179,8 +187,8 @@ $(() => {
   });
 
   //clear cart
-  $("#clear").on("click",()=>{
+  $("#clear").on("click", () => {
     localStorage.removeItem("cart");
-      location.reload();
-  })
+    location.reload();
+  });
 });
