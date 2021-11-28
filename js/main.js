@@ -209,15 +209,25 @@ $(() => {
       quantity -= 1;
       quantityInput.val(quantity);
       console.log(quantity);
+      orderItem.updateQuantity(quantity);
+      orderItem.getTotal();
+      $("#total").text(orderItem.getTotal());
+      console.log(quantity);
     } else {
       return;
     }
   });
 
   //Receive form input
+$("#form-order").on("submit",(e)=>{
 
+  e.preventDefault();
+  cart.push(orderItem);
+  localStorage.setItem("cart",JSON.stringify(cart));
+  console.log(cart[0]);
+})
+  //listen for changes in topping checkboxes
   $(".toppings-check").on("change", (e) => {
-    // e.preventDefault();
     //get toppings selection
     let toppings = $(".toppings-check:checked");
     let crust = $("[name=crustradio]:checked").val();
