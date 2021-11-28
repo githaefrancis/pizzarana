@@ -62,7 +62,7 @@ Order.prototype.getTotal = function () {
       this.basePrice = 0;
     }
   }
-  this.total = this.basePrice + this.toppingsTotal + this.crustTotal;
+  this.total = (this.basePrice + this.toppingsTotal + this.crustTotal) * this.quantity;
   console.log(this.total);
   return this.total;
 };
@@ -182,6 +182,9 @@ $(() => {
     let quantityInput = $("#qty");
     let quantity = parseInt(quantityInput.val()) + 1;
     quantityInput.val(quantity);
+    orderItem.updateQuantity(quantity);
+    orderItem.getTotal();
+    $("#total").text(orderItem.getTotal());
     console.log(quantity);
   });
   //Reduce quantity
@@ -219,5 +222,13 @@ $(() => {
     console.log(orderItem.getTotal());
     orderItem.getToppingsTotal();
     orderItem.getCrustTotal();
+    //set the total button value
+    $("#total").text(orderItem.getTotal());
   });
+
+  //update the price per the number of pizzas
+  $("#qty").on("change",()=>{
+    console.log($("#qty").text());
+  });
+
 });
