@@ -15,9 +15,7 @@
     <script src="https://use.fontawesome.com/cdf8dc5fd3.js"></script>
   </head>
   <body>
-
     <header class="container-fluid">
-
       <!-- navbar -->
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -34,20 +32,22 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div
-            class="collapse navbar-collapse d-lg-flex justify-content-lg-around"
+            class="collapse navbar-collapse d-lg-flex justify-content-lg-evenly"
             id="navbarNavAltMarkup"
           >
             <div class="navbar-nav fs-4">
               <a
-                class="nav-link active mx-lg-4 text-black"
+                class="nav-link mx-lg-4 text-black"
                 aria-current="page"
                 href="#"
                 >Home</a
               >
               <a class="nav-link mx-lg-5 text-black" href="#">Menu</a>
               <a class="nav-link mx-lg-5 text-black" href="#">Contact</a>
-              <a class="nav-link mx-lg-5 text-black" href="#">About</a>
-              <a class="nav-link mx-lg-5" href=""
+              <!-- <a class="nav-link mx-lg-5 text-black" href="#">About</a> -->
+            </div>
+            <div class="navbar-nav">
+              <a class="nav-link active mx-lg-5" href=""
                 ><img src="./img/cart.png" alt="" /><span>0</span></a
               >
             </div>
@@ -55,7 +55,35 @@
         </div>
       </nav>
       <!-- navbar -->
+      <!-- cart items -->
+      <div class="container">
+        <div class="row container">
+          <div class="col-lg-8">
+            <div class="card border-0">
+              <h2 class="mx-5">My Cart</h2>
+              <hr class="mx-5" />
+              <div class="cart-body">
+                <div class="item row">
+                  <div class="col-3 mx-5">Item1</div>
+                  <div class="col-5">
+                    <div class="title">
+                      <p>Pepperoni Pizza</p>
+                      <ul>
+                        <li>Mushrooms</li>
+                        <li>Pineapples</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-2">Ksh 1310</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- cart items -->
     </header>
+
     <div class="footer my-5 text-center">
       &copy;2021 Pizzarana | Francis Githae
     </div>
@@ -71,6 +99,7 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+    <script src="js/cart.js"></script>
   </body>
 </html>
