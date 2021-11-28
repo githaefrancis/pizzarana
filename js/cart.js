@@ -30,5 +30,19 @@ $(() => {
               </div>
     `);
     // $(".cart-body").append(singleCartItem);
+
   }
+
+  $("[name=delivery]").on("change",()=>{
+    let deliveryToggle=$("[name=delivery]:checked")
+    // console.log(this);
+    if(deliveryToggle.length>0){
+      alert("someone might need delivery");
+    }
+    else{
+      
+    }
+    
+
+  })
 });
