@@ -63,7 +63,7 @@ $(() => {
         </div>
         <div class="col-lg-2">
           <span 
-            ><h3 id="grand-total" class="badge bg-dark fs-4">Ksh ${getGrandTotal()}</h3></span
+            ><h3 id="sub-total" class="badge bg-dark fs-4">Ksh ${getGrandTotal()}</h3></span
           >
         </div>
       </div>
@@ -90,7 +90,7 @@ $(() => {
 
         <!--delivery location-->
         <div class="col-lg-5">
-          <h3 id="display-location" class="d-none">
+          <h3 id="display-location" class="delivery-cost d-none">
             <i
               class="fa fa-map-marker text-success"
               aria-hidden="true"
@@ -106,16 +106,6 @@ $(() => {
           <span class="delivery-cost d-none "
             ><h2 class="badge bg-dark fs-4">Ksh 150</h2></span
           >
-          <h3 id="display-location" class="d-none">
-            <i
-              class="fa fa-map-marker text-success"
-              aria-hidden="true"
-            ></i>
-            <span
-              id="location"
-              class="fst-italic badge bg-success"
-            ></span>
-          </h3>
         </div>
       </div>
 
@@ -126,12 +116,18 @@ $(() => {
         </div>
         <div class="col-lg-2">
           <span 
-            ><h3 id="grand-total" class="badge bg-dark fs-4">Ksh ${getGrandTotal() + 150}</h3></span
+            ><h3 id="grand-total" class="badge bg-dark fs-4">Ksh ${getGrandTotal()}</h3></span
           >
         </div>
       </div>
       <!--Total -->
-      <div class="place-order d-flex justify-content-center">
+      <div class="place-order d-flex justify-content-around">
+      <button
+          class="btn btn-secondary btn-sm align-self-center"
+          id="clear"
+        >
+          Clear Cart
+        </button>
         <button
           class="btn btn-success btn-sm align-self-center"
           id="place-order"
@@ -155,9 +151,11 @@ $(() => {
       $(".delivery-cost").removeClass("d-none");
       $("#location").text(deliveryLocation);
       $("#display-location").removeClass("d-none");
+      $("#grand-total").text(`Ksh ${getGrandTotal() + 150}`);
     } else {
       $(".delivery-cost").addClass("d-none");
-      $("#delivery-display").addClass("d-none");
+      $("#grand-total").text(`Ksh ${getGrandTotal()}`);
+      // $("#delivery-display").addClass("d-none");
     }
   });
 
@@ -179,4 +177,10 @@ $(() => {
       return;
     }
   });
+
+  //clear cart
+  $("#clear").on("click",()=>{
+    localStorage.removeItem("cart");
+      location.reload();
+  })
 });
