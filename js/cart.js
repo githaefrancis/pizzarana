@@ -8,18 +8,18 @@ $(() => {
   console.log(shoppingCart);
 
   //Get total price of the cart
-  const getGrandTotal=()=>{
-    let grandTotal=0;
+  const getGrandTotal = () => {
+    let grandTotal = 0;
     for (i = 0; i < shoppingCart.length; i++) {
-    grandTotal+=shoppingCart[i].total;
-    console.log(grandTotal);
-    return grandTotal;
+      grandTotal += shoppingCart[i].total;
+      console.log(grandTotal);
+      return grandTotal;
     }
-  }
+  };
   // let singleCartItem;
   if (shoppingCart !== null) {
     $("#items-count").text(shoppingCart.length);
-    
+
     for (i = 0; i < shoppingCart.length; i++) {
       console.log(shoppingCart.length);
       // console.log(i);
@@ -57,18 +57,18 @@ $(() => {
     $(".cart-body").append(`<div class="cart-totals">
   <div class="card">
     <div class="card-title">
-      <div class="row d-flex justify-content-start align-items-end">
+      <div class="row d-flex justify-content-start align-items-end py-2">
         <div class="col-lg-7 mx-lg-5">
           <h2>Sub-Total</h2>
         </div>
         <div class="col-lg-2">
-          <span class="badge bg-dark"
-            ><h3 id="grand-total">Ksh ${getGrandTotal()}</h3></span
+          <span 
+            ><h3 id="grand-total" class="badge bg-dark fs-4">Ksh ${getGrandTotal()}</h3></span
           >
         </div>
       </div>
       <div class="row d-flex justify-content-start">
-        <div class="col-lg-7 mx-lg-5 col-sm-2">
+        <div class="col-lg-2 mx-lg-5 col-sm-2">
           <h2>
             <div class="form-check form-switch">
               <input
@@ -87,9 +87,24 @@ $(() => {
             </div>
           </h2>
         </div>
+
+        <!--delivery location-->
+        <div class="col-lg-5">
+          <h3 id="display-location" class="d-none">
+            <i
+              class="fa fa-map-marker text-success"
+              aria-hidden="true"
+            ></i>
+            <span
+              id="location"
+              class="fst-italic badge bg-success"
+            ></span>
+          </h3>
+        </div>
+        <!--delivery location-->
         <div class="col-lg-2">
-          <span class="delivery-cost d-none badge bg-dark"
-            ><h3>Ksh 150</h3></span
+          <span class="delivery-cost d-none "
+            ><h2 class="badge bg-dark fs-4">Ksh 150</h2></span
           >
           <h3 id="display-location" class="d-none">
             <i
@@ -103,6 +118,19 @@ $(() => {
           </h3>
         </div>
       </div>
+
+      <!--Total -->
+      <div class="row d-flex justify-content-start align-items-end py-2">
+        <div class="col-lg-7 mx-lg-5">
+          <h2>Total</h2>
+        </div>
+        <div class="col-lg-2">
+          <span 
+            ><h3 id="grand-total" class="badge bg-dark fs-4">Ksh ${getGrandTotal() + 150}</h3></span
+          >
+        </div>
+      </div>
+      <!--Total -->
       <div class="place-order d-flex justify-content-center">
         <button
           class="btn btn-success btn-sm align-self-center"
