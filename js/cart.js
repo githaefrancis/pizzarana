@@ -42,21 +42,36 @@ $(() => {
     `);
     // $(".cart-body").append(singleCartItem);
   }
-
+  let deliveryLocation;
   $("[name=delivery]").on("change", () => {
-    
     let deliveryToggle = $("[name=delivery]:checked");
     // console.log(this);
     if (deliveryToggle.length > 0) {
-      let deliveryLocation=prompt("Please provide the delivery location")
+      deliveryLocation = prompt("Please provide the delivery location");
       console.log(deliveryLocation.toLowerCase());
       $(".delivery-cost").removeClass("d-none");
-      $("#location").text(deliveryLocation)
+      $("#location").text(deliveryLocation);
       $("#display-location").removeClass("d-none");
     } else {
       $(".delivery-cost").addClass("d-none");
       $("#delivery-display").addClass("d-none");
+    }
+  });
 
+  $("#place-order").on("click", () => {
+    if (confirm("PLease confirm that you want to place the order now")) {
+      // console.log("Hooray, we have a new order guys");
+      if(deliveryLocation){
+        alert(
+          `Congratulations!Your order has been placed. It will be delivered to ${deliveryLocation}`
+        );
+      }
+      else{
+        alert(`Congratulations!Your order has been placed successfully.Thank you`)
+      }
+    }
+    else{
+      return;
     }
   });
 });
