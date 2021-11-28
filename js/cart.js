@@ -3,10 +3,12 @@ $(() => {
   // console.log(cart);
   const shoppingCart = JSON.parse(localStorage.getItem("cart"));
   // const shoppingCart=localStorage.getItem("cart");
-  $("#items-count").text(shoppingCart.length);
+  
   console.log(shoppingCart);
-  console.log(shoppingCart.length);
+  console.log(shoppingCart);
   // let singleCartItem;
+  if(shoppingCart!==null){
+    $("#items-count").text(shoppingCart.length);
   for (i = 0; i < shoppingCart.length; i++) {
     console.log(shoppingCart.length);
     // console.log(i);
@@ -42,6 +44,11 @@ $(() => {
     `);
     // $(".cart-body").append(singleCartItem);
   }
+}
+else{
+  $(".cart-body").append("Your cart seems empty. Get some Pizza");
+
+}
   let deliveryLocation;
   $("[name=delivery]").on("change", () => {
     let deliveryToggle = $("[name=delivery]:checked");
@@ -69,6 +76,7 @@ $(() => {
       else{
         alert(`Congratulations!Your order has been placed successfully.Thank you`)
       }
+      localStorage.removeItem("cart");
     }
     else{
       return;
