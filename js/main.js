@@ -223,7 +223,12 @@ $("#form-order").on("submit",(e)=>{
 
   e.preventDefault();
   cart.push(orderItem);
+  //update cart items count display
+
+  $("#items-count").text(cart.length);
+  //add to cart array
   localStorage.setItem("cart",JSON.stringify(cart));
+  // localStorage.setItem("cart",cart.toString());
   console.log(cart[0]);
 })
   //listen for changes in topping checkboxes
