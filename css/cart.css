@@ -1,5 +1,6 @@
-@media only screen and (max-width:480px){
 .item:not(:last-child){
-  border-bottom:1px solid grey;
+  /* border-bottom:1px solid grey; */
 }
+@media only screen and (max-width:480px){
+
 }
