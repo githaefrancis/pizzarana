@@ -2,7 +2,7 @@
   color: #66501c #d73600 #72b349 #ecf8fa #ff540f;
 }
 /* header styles */
-header,.card-body {
+header,.card-body,body {
   background-color: #ecf8fa;
 }
 .active{

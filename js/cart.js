@@ -6,11 +6,13 @@ $(() => {
   $("#items-count").text(shoppingCart.length);
   console.log(shoppingCart);
   console.log(shoppingCart.length);
-  let singleCartItem;
+  // let singleCartItem;
   for (i = 0; i < shoppingCart.length; i++) {
-    singleCartItem = `
+    console.log(shoppingCart.length);
+    // console.log(i);
+    $(".cart-body").append(`
     <div class="item row d-flex justify-content-start">
-                <div class="col-lg-2 mx-lg-5 col-sm-3" id="item-index">${i}</div>
+                <div class="col-lg-2 mx-lg-5 col-sm-3" id="item-index">${i+1}</div>
                 <div class="col-lg-5 col-sm-6">
                   <div class="title">
                     <p id="item-name">Pepperoni Pizza</p>
@@ -26,7 +28,7 @@ $(() => {
                   <h2 class="badge bg-dark fs-4" id="item-total">Ksh 1310</h2>
                 </div>
               </div>
-    `;
-    $(".cart-body").append(singleCartItem);
+    `);
+    // $(".cart-body").append(singleCartItem);
   }
 });
