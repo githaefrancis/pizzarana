@@ -44,12 +44,19 @@ $(() => {
   }
 
   $("[name=delivery]").on("change", () => {
-    $(".delivery-cost").toggleClass("d-none");
+    
     let deliveryToggle = $("[name=delivery]:checked");
     // console.log(this);
     if (deliveryToggle.length > 0) {
-      alert("someone might need delivery");
+      let deliveryLocation=prompt("Please provide the delivery location")
+      console.log(deliveryLocation.toLowerCase());
+      $(".delivery-cost").removeClass("d-none");
+      $("#location").text(deliveryLocation)
+      $("#display-location").removeClass("d-none");
     } else {
+      $(".delivery-cost").addClass("d-none");
+      $("#delivery-display").addClass("d-none");
+
     }
   });
 });
