@@ -101,7 +101,8 @@ Order.prototype.getCrustTotal = function () {
   return crustPrice;
 };
 let cart = [];
-let orderItem;
+// let orderItem;
+let orderItem=[];
 
 //dom ready
 $(() => {
@@ -169,17 +170,17 @@ $(() => {
     toggleToppingPrices(activeSize);
     toggleCrustPrices(activeSize);
     console.log(activeSize[0].value);
-    orderItem.updateSize(activeSize[0].value);
-    orderItem.getTotal();
-    $("#total").text(orderItem.getTotal());
+    orderItem[orderItem.length-1].updateSize(activeSize[0].value);
+    orderItem[orderItem.length-1].getTotal();
+    $("#total").text(orderItem[orderItem.length-1].getTotal());
   });
 
   //event listener for change in crust type
   $("[name=crustradio]").on("change", () => {
     let activeCrust = $("[name=crustradio]:checked");
-    orderItem.updateCrust(activeCrust[0].value);
-    orderItem.getTotal();
-    $("#total").text(orderItem.getTotal());
+    orderItem[orderItem.length-1].updateCrust(activeCrust[0].value);
+    orderItem[orderItem.length-1].getTotal();
+    $("#total").text(orderItem[orderItem.length-1].getTotal());
   });
   //get checkbox values
   const getCheckboxValues = (selectedCheckboxes) => {
@@ -195,9 +196,9 @@ $(() => {
     let quantityInput = $("#qty");
     let quantity = parseInt(quantityInput.val()) + 1;
     quantityInput.val(quantity);
-    orderItem.updateQuantity(quantity);
-    orderItem.getTotal();
-    $("#total").text(orderItem.getTotal());
+    orderItem[orderItem.length-1].updateQuantity(quantity);
+    orderItem[orderItem.length-1].getTotal();
+    $("#total").text(orderItem[orderItem.length-1].getTotal());
     console.log(quantity);
   });
   //Reduce quantity
@@ -209,9 +210,9 @@ $(() => {
       quantity -= 1;
       quantityInput.val(quantity);
       console.log(quantity);
-      orderItem.updateQuantity(quantity);
-      orderItem.getTotal();
-      $("#total").text(orderItem.getTotal());
+      orderItem[orderItem.length-1].updateQuantity(quantity);
+      orderItem[orderItem.length-1].getTotal();
+      $("#total").text(orderItem[orderItem.length-1].getTotal());
       console.log(quantity);
     } else {
       return;
@@ -222,7 +223,7 @@ $(() => {
 $("#form-order").on("submit",(e)=>{
 
   e.preventDefault();
-  cart.push(orderItem);
+  cart.push(orderItem[orderItem.length-1]);
   //update cart items count display
 
   $("#items-count").text(cart.length);
@@ -238,22 +239,23 @@ $("#form-order").on("submit",(e)=>{
     let crust = $("[name=crustradio]:checked").val();
     let size = $("[name=sizeradio]:checked").val();
     toppingsSelection = getCheckboxValues(toppings);
-    orderItem.updateToppings(toppingsSelection);
-    $("#total").text(orderItem.getTotal());
+    orderItem[orderItem.length-1].updateToppings(toppingsSelection);
+    $("#total").text(orderItem[orderItem.length-1].getTotal());
     console.log(toppingsSelection);
     console.log(crust);
     console.log(size);
   });
   let orderItemCount = 0;
+  
   $("#order-now").on("click", () => {
     orderItemCount += 1;
-    orderItem = new Order("large", ["pepperoni", "chicken-bbq"], "crispy", 1);
-    console.log(orderItem);
-    console.log(orderItem.getTotal());
-    orderItem.getToppingsTotal();
-    orderItem.getCrustTotal();
+    orderItem.push(new Order("large", ["pepperoni", "chicken-bbq"], "crispy", 1));
+    console.log(orderItem[orderItem.length-1]);
+    console.log(orderItem[orderItem.length-1].getTotal());
+    orderItem[orderItem.length-1].getToppingsTotal();
+    orderItem[orderItem.length-1].getCrustTotal();
     //set the total button value
-    $("#total").text(orderItem.getTotal());
+    $("#total").text(orderItem[orderItem.length-1].getTotal());
   });
 
   //update the price per the number of pizzas
@@ -262,5 +264,5 @@ $("#form-order").on("submit",(e)=>{
   });
 
   // Update order total displayed
-  const updateOrderTotalElement = () => {};
+  // const updateOrderTotalElement = () => {};
 });
