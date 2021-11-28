@@ -231,7 +231,9 @@ $("#form-order").on("submit",(e)=>{
   localStorage.setItem("cart",JSON.stringify(cart));
   // localStorage.setItem("cart",cart.toString());
   console.log(cart[0]);
-})
+  $("#order-modal").modal('hide');
+  alert("Item added successfully to cart");
+});
   //listen for changes in topping checkboxes
   $(".toppings-check").on("change", (e) => {
     //get toppings selection
