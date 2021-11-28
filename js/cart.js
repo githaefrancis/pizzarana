@@ -6,9 +6,20 @@ $(() => {
 
   console.log(shoppingCart);
   console.log(shoppingCart);
+
+  //Get total price of the cart
+  const getGrandTotal=()=>{
+    let grandTotal=0;
+    for (i = 0; i < shoppingCart.length; i++) {
+    grandTotal+=shoppingCart[i].total;
+    console.log(grandTotal);
+    return grandTotal;
+    }
+  }
   // let singleCartItem;
   if (shoppingCart !== null) {
     $("#items-count").text(shoppingCart.length);
+    
     for (i = 0; i < shoppingCart.length; i++) {
       console.log(shoppingCart.length);
       // console.log(i);
@@ -52,7 +63,7 @@ $(() => {
         </div>
         <div class="col-lg-2">
           <span class="badge bg-dark"
-            ><h3 id="grand-total">Ksh 1310</h3></span
+            ><h3 id="grand-total">Ksh ${getGrandTotal()}</h3></span
           >
         </div>
       </div>
@@ -106,6 +117,7 @@ $(() => {
   } else {
     $(".cart-body").append("Your cart seems empty. Get some Pizza");
   }
+
   let deliveryLocation;
   $("[name=delivery]").on("change", () => {
     let deliveryToggle = $("[name=delivery]:checked");
