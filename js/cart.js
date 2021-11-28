@@ -112,7 +112,6 @@ $(() => {
     // console.log(this);
     if (deliveryToggle.length > 0) {
       deliveryLocation = prompt("Please provide the delivery location");
-      console.log(deliveryLocation.toLowerCase());
       $(".delivery-cost").removeClass("d-none");
       $("#location").text(deliveryLocation);
       $("#display-location").removeClass("d-none");
@@ -123,7 +122,7 @@ $(() => {
   });
 
   $("#place-order").on("click", () => {
-    if (confirm("PLease confirm that you want to place the order now")) {
+    if (confirm("Please confirm that you want to place the order now")) {
       // console.log("Hooray, we have a new order guys");
       if (deliveryLocation) {
         alert(
@@ -135,6 +134,7 @@ $(() => {
         );
       }
       localStorage.removeItem("cart");
+      location.reload();
     } else {
       return;
     }
