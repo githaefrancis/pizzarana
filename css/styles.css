@@ -12,3 +12,20 @@ header,.card-body,body {
 
   background-color:#000000!important;
 }
+
+@media only screen and (max-width:480px) {
+  #pizza-card{
+    width:100%;
+  }  
+}
+@media only screen and (min-width:481) and (max-width:767px) {
+  #pizza-card{
+    width:100%;
+  }
+}
+@media only screen and (min-width:768px){
+  #pizza-card{
+    width:50%;
+  }
+
+}
