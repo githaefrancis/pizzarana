@@ -54,7 +54,6 @@ Order.prototype.updateCrust = function (newCrust) {
 Order.prototype.getTotal = function () {
   this.getToppingsTotal();
   this.getCrustTotal();
-  console.log(pizzaPrices.length);
   for (i = 0; i < pizzaPrices.length; i++) {
     if (pizzaPrices[i].size === this.size) {
       this.basePrice = pizzaPrices[i].price;
@@ -65,13 +64,13 @@ Order.prototype.getTotal = function () {
   }
   this.total =
     (this.basePrice + this.toppingsTotal + this.crustTotal) * this.quantity;
-  console.log(this.total);
   return this.total;
 };
 Order.prototype.getToppingsTotal = function () {
-  console.log(typeof this.toppings);
   if (this.toppings.length < 1) {
     console.log("no toppings found");
+    this.toppingsTotal=0;
+    return 0;
   } else {
     totalPrice = 0;
     for (i = 0; i < this.toppings.length; i++) {
@@ -144,16 +143,14 @@ $(() => {
   let toggleToppingPrices = (checked) => {
     let activeSize = checked[0].value;
     let activeToppingPrices = getToppingsPrices(activeSize);
-    // console.log(activeToppingPrices);
     let toppingsCheckboxes = $(".toppings-check");
 
-    // console.log(toppingsPricesSpans);
+    
     for (i = 0; i < toppingsCheckboxes.length; i++) {
       toppingsId = toppingsCheckboxes[i].id;
       priceSpanId = "#" + toppingsId + "-price";
       $(priceSpanId).text(activeToppingPrices[i]);
-      // toppingsPrice=toppingsPrice[]
-      // toppingsCheckboxes[i].text = activeToppingPrices[i];
+    
     }
   };
 
@@ -242,20 +239,14 @@ $(() => {
   $("#form-order").on("submit", (e) => {
     e.preventDefault();
     newCart = getLocalStorageState();
-    console.log(newCart);
     newCart.push(orderItem[orderItem.length - 1]);
-    console.log(newCart);
-    // cart.push(orderItem[orderItem.length - 1]);
+    
+    
     cart = newCart;
-    // cart.push(newCart);
-    //update cart items count display
 
     $("#items-count").text(cart.length);
     //add to cart array
     localStorage.setItem("cart", JSON.stringify(cart));
-    // localStorage.setItem("cart",cart.toString());
-    console.log(cart[0]);
-    console.log(cart);
     $("#order-modal").modal("hide");
     alert("Item added successfully to cart");
   });
@@ -268,9 +259,7 @@ $(() => {
     toppingsSelection = getCheckboxValues(toppings);
     orderItem[orderItem.length - 1].updateToppings(toppingsSelection);
     $("#total").text(orderItem[orderItem.length - 1].getTotal());
-    console.log(toppingsSelection);
-    console.log(crust);
-    console.log(size);
+
   });
   let orderItemCount = 0;
   let selectedPizza;
@@ -282,14 +271,12 @@ $(() => {
       new Order(
         selectedPizza,
         "large",
-        ["pepperoni", "chicken-bbq"],
+        [],
         "crispy",
         1
       )
     );
 
-    console.log(orderItem[orderItem.length - 1]);
-    console.log(orderItem[orderItem.length - 1].getTotal());
     orderItem[orderItem.length - 1].getToppingsTotal();
     orderItem[orderItem.length - 1].getCrustTotal();
     //set the total button value
@@ -298,10 +285,8 @@ $(() => {
 
   //update the price per the number of pizzas
   $("#qty").on("change", () => {
-    console.log($("#qty").text());
+    
   });
 
-  // Update order total displayed
-
-  // const updateOrderTotalElement = () => {};
+  
 });
