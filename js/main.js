@@ -241,8 +241,8 @@ $(() => {
     cart = newCart;
 
     $("#items-count").text(cart.length);
-    $("#items-count-mobile").text(shoppingCart.length);
-    $("#items-count-button").text(shoppingCart.length);
+    $("#items-count-mobile").text(cart.length);
+    $("#items-count-button").text(cart.length);
     //add to cart array
     localStorage.setItem("cart", JSON.stringify(cart));
     $("#order-modal").modal("hide");
