@@ -12,6 +12,9 @@ header,.card-body,body {
 
   background-color:#000000!important;
 }
+.social{
+  height:2rem
+}
 
 @media only screen and (max-width:480px) {
   #pizza-card{
@@ -26,6 +29,10 @@ header,.card-body,body {
 @media only screen and (min-width:768px){
   #pizza-card{
     width:50%;
+  }
+  .slogan{
+    padding-top: 2rem;
+    
   }
 
 }
