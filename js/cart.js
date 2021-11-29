@@ -19,9 +19,13 @@ $(() => {
   //Display toppings
   let getToppings = (toppings) => {
     let li="";
+    if(toppings.length>0){
     for (k = 0; k < toppings.length; k++) {
       li += `<li class="d-inline-block px-1">${toppings[k]}</li>`;
       console.log(li);
+    }}
+    else{
+      li+=`<li class="d-inline-block px-1">No Toppings</li>`;
     }
     return li;
   };
