@@ -39,7 +39,7 @@ $(() => {
                 }</div>
                 <div class="col-lg-5 col-sm-6">
                   <div class="title">
-                    <p id="item-name">Pepperoni Pizza</p>
+                    <p id="item-name">${shoppingCart[i].flavor}</p>
                     <p>Size: <span class="badge bg-dark">${
                       shoppingCart[i].size
                     } </span> Qty: <span class="badge bg-dark">${

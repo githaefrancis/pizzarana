@@ -20,7 +20,7 @@ const toppingPrices = [
   { name: "mozzarella", price: { large: 80, medium: 60, small: 40 } },
 ];
 
-function Order(size, toppings, crust, quantity) {
+function Order(flavor,size, toppings, crust, quantity) {
   this.size = size;
   this.toppings = toppings;
   this.crust = crust;
@@ -29,6 +29,7 @@ function Order(size, toppings, crust, quantity) {
   this.basePrice;
   this.toppingsTotal = 0;
   this.crustTotal = 0;
+  this.flavor=flavor;
 }
 
 //method to update the size of pizza
@@ -116,6 +117,7 @@ $(() => {
   console.log(shoppingCart);
   if (shoppingCart !== null) {
     $("#items-count").text(shoppingCart.length);
+    $("#items-count-mobile").text(shoppingCart.length);
   }
   else 
   $("#items-count").text(0);
@@ -273,12 +275,15 @@ $(() => {
     console.log(size);
   });
   let orderItemCount = 0;
-
+  let selectedPizza;
   $("#order-now").on("click", () => {
     orderItemCount += 1;
+    selectedPizza=localStorage.getItem("activePizza");
+    $("#order-modal-title").append(selectedPizza);
     orderItem.push(
-      new Order("large", ["pepperoni", "chicken-bbq"], "crispy", 1)
+      new Order(selectedPizza,"large", ["pepperoni", "chicken-bbq"], "crispy", 1)
     );
+
     console.log(orderItem[orderItem.length - 1]);
     console.log(orderItem[orderItem.length - 1].getTotal());
     orderItem[orderItem.length - 1].getToppingsTotal();
