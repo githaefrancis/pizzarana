@@ -11,10 +11,10 @@ $(() => {
   const getGrandTotal = () => {
     let grandTotal = 0;
     for (i = 0; i < shoppingCart.length; i++) {
-      grandTotal += shoppingCart[i].total;
-      console.log(grandTotal);
-      return grandTotal;
+      grandTotal += shoppingCart[i].total;  
     }
+    console.log(grandTotal);
+      return grandTotal;
   };
   //Display toppings
   let getToppings = (toppings) => {
