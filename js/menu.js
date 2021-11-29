@@ -19,6 +19,6 @@ $(()=>{
       $("#pizzaFlavour").text("Cheese");
       updateActivePizza("Cheese Pizza");
     }
-    console.log(localStorage.getItem("activePizza"));
+    
   })
 })
