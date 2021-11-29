@@ -249,6 +249,11 @@ $(() => {
     alert("Item added successfully to cart");
     
   });
+
+  //clear form
+  $("#order-modal").on('hide.bs.modal',()=>{
+    location.reload();
+  })
   //listen for changes in topping checkboxes
   $(".toppings-check").on("change", (e) => {
     //get toppings selection
@@ -285,6 +290,8 @@ $(() => {
   $("#qty").on("change", () => {
     
   });
+ 
+
 
   
 });
