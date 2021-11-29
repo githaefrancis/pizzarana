@@ -1,11 +1,7 @@
 $(() => {
-  // $('header').height($(document).height());
-  // console.log(cart);
-  const shoppingCart = JSON.parse(localStorage.getItem("cart"));
-  // const shoppingCart=localStorage.getItem("cart");
 
-  console.log(shoppingCart);
-  console.log(shoppingCart);
+  const shoppingCart = JSON.parse(localStorage.getItem("cart"));
+  
 
   //Get total price of the cart
   const getGrandTotal = () => {
@@ -13,7 +9,7 @@ $(() => {
     for (i = 0; i < shoppingCart.length; i++) {
       grandTotal += shoppingCart[i].total;  
     }
-    console.log(grandTotal);
+  
       return grandTotal;
   };
   //Display toppings
@@ -22,7 +18,6 @@ $(() => {
     if(toppings.length>0){
     for (k = 0; k < toppings.length; k++) {
       li += `<li class="d-inline-block px-1">${toppings[k]}</li>`;
-      console.log(li);
     }}
     else{
       li+=`<li class="d-inline-block px-1">No Toppings</li>`;
@@ -34,8 +29,7 @@ $(() => {
     $("#items-count").text(shoppingCart.length);
 
     for (i = 0; i < shoppingCart.length; i++) {
-      console.log(shoppingCart.length);
-      // console.log(i);
+      
       $(".cart-body").append(`
     <div class="item row d-flex justify-content-start mt-5">
                 <div class="col-lg-2 mx-lg-5 col-sm-3" id="item-index">${
@@ -157,7 +151,6 @@ $(() => {
   let deliveryLocation;
   $("[name=delivery]").on("change", () => {
     let deliveryToggle = $("[name=delivery]:checked");
-    // console.log(this);
     if (deliveryToggle.length > 0) {
       deliveryLocation = prompt("Please provide the delivery location");
       $(".delivery-cost").removeClass("d-none");
@@ -167,13 +160,11 @@ $(() => {
     } else {
       $(".delivery-cost").addClass("d-none");
       $("#grand-total").text(`Ksh ${getGrandTotal()}`);
-      // $("#delivery-display").addClass("d-none");
     }
   });
 
   $("#place-order").on("click", () => {
     if (confirm("Please confirm that you want to place the order now")) {
-      // console.log("Hooray, we have a new order guys");
       if (deliveryLocation) {
         alert(
           `Congratulations!Your order has been placed. It will be delivered to ${deliveryLocation}`

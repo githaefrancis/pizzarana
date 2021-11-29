@@ -83,10 +83,10 @@ Order.prototype.getToppingsTotal = function () {
     }
     this.toppingsTotal = totalPrice;
     // this.getTotal();
-    console.log(totalPrice);
+    
     return totalPrice;
   }
-  console.log(this.toppings);
+  
 };
 
 Order.prototype.getCrustTotal = function () {
@@ -96,7 +96,7 @@ Order.prototype.getCrustTotal = function () {
       crustPrice = crustPrices[i].price[this.size];
     }
   }
-  console.log(crustPrice);
+  
   this.crustTotal = crustPrice;
   return crustPrice;
 };
@@ -113,7 +113,7 @@ $(() => {
   $("#small-price").text(pizzaPrices[2].price);
 
   let shoppingCart = JSON.parse(localStorage.getItem("cart"));
-  console.log(shoppingCart);
+  
   if (shoppingCart !== null) {
     $("#items-count").text(shoppingCart.length);
     $("#items-count-mobile").text(shoppingCart.length);
@@ -158,13 +158,10 @@ $(() => {
   let toggleCrustPrices = (checked) => {
     let activeSize = checked[0].value;
     let activeCrustPrices = getCrustPrices(activeSize);
-    console.log(activeCrustPrices);
+    
     for (i = 0; i < 3; i++) {
       crustInputId = $("[name=crustradio]");
-      console.log(crustInputId);
-      console.log(crustInputId[i].id);
       crustPriceSpanId = "#" + crustInputId[i].id + "-price";
-      console.log(crustPriceSpanId);
       $(crustPriceSpanId).text(activeCrustPrices[i]);
     }
   };
@@ -178,7 +175,6 @@ $(() => {
     let activeSize = $("[name=sizeradio]:checked");
     toggleToppingPrices(activeSize);
     toggleCrustPrices(activeSize);
-    console.log(activeSize[0].value);
     orderItem[orderItem.length - 1].updateSize(activeSize[0].value);
     orderItem[orderItem.length - 1].getTotal();
     $("#total").text(orderItem[orderItem.length - 1].getTotal());
@@ -208,7 +204,7 @@ $(() => {
     orderItem[orderItem.length - 1].updateQuantity(quantity);
     orderItem[orderItem.length - 1].getTotal();
     $("#total").text(orderItem[orderItem.length - 1].getTotal());
-    console.log(quantity);
+    
   });
   //Reduce quantity
 
@@ -218,11 +214,11 @@ $(() => {
     if (quantity > 0) {
       quantity -= 1;
       quantityInput.val(quantity);
-      console.log(quantity);
+      
       orderItem[orderItem.length - 1].updateQuantity(quantity);
       orderItem[orderItem.length - 1].getTotal();
       $("#total").text(orderItem[orderItem.length - 1].getTotal());
-      console.log(quantity);
+      
     } else {
       return;
     }
@@ -230,7 +226,7 @@ $(() => {
 
   let getLocalStorageState = () => {
     shoppingCart = JSON.parse(localStorage.getItem("cart"));
-    console.log(shoppingCart);
+    
     if (shoppingCart !== null) {
       return shoppingCart;
     } else return [];
@@ -245,10 +241,13 @@ $(() => {
     cart = newCart;
 
     $("#items-count").text(cart.length);
+    $("#items-count-mobile").text(shoppingCart.length);
+    $("#items-count-button").text(shoppingCart.length);
     //add to cart array
     localStorage.setItem("cart", JSON.stringify(cart));
     $("#order-modal").modal("hide");
     alert("Item added successfully to cart");
+    
   });
   //listen for changes in topping checkboxes
   $(".toppings-check").on("change", (e) => {
@@ -261,10 +260,9 @@ $(() => {
     $("#total").text(orderItem[orderItem.length - 1].getTotal());
 
   });
-  let orderItemCount = 0;
+
   let selectedPizza;
   $("#order-now").on("click", () => {
-    orderItemCount += 1;
     selectedPizza = localStorage.getItem("activePizza");
     $("#order-modal-title").append(selectedPizza);
     orderItem.push(

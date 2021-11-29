@@ -5,7 +5,7 @@ $(()=>{
     localStorage.setItem("activePizza",active.toString())
   }
   $("#menu-carousel").on("slide.bs.carousel",()=>{
-    console.log("slid again");
+    
     activeFlavour=($(".carousel-item.active").attr("id"));
     if(activeFlavour=="chicken-p"){
       $("#pizzaFlavour").text("Chicken-BBQ")
