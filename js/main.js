@@ -264,7 +264,7 @@ $(() => {
   let selectedPizza;
   $("#order-now").on("click", () => {
     selectedPizza = localStorage.getItem("activePizza");
-    $("#order-modal-title").append(selectedPizza);
+    $("#order-modal-title").text(selectedPizza);
     orderItem.push(
       new Order(
         selectedPizza,
