@@ -102,7 +102,7 @@ Order.prototype.getCrustTotal = function () {
 };
 let cart = [];
 // let orderItem;
-let orderItem=[];
+let orderItem = [];
 
 //dom ready
 $(() => {
@@ -111,6 +111,14 @@ $(() => {
   $("#large-price").text(pizzaPrices[0].price);
   $("#medium-price").text(pizzaPrices[1].price);
   $("#small-price").text(pizzaPrices[2].price);
+
+  let shoppingCart = JSON.parse(localStorage.getItem("cart"));
+  console.log(shoppingCart);
+  if (shoppingCart !== null) {
+    $("#items-count").text(shoppingCart.length);
+  }
+  else 
+  $("#items-count").text(0);
 
   //get toppings prices
   let getToppingsPrices = (size) => {
@@ -170,17 +178,17 @@ $(() => {
     toggleToppingPrices(activeSize);
     toggleCrustPrices(activeSize);
     console.log(activeSize[0].value);
-    orderItem[orderItem.length-1].updateSize(activeSize[0].value);
-    orderItem[orderItem.length-1].getTotal();
-    $("#total").text(orderItem[orderItem.length-1].getTotal());
+    orderItem[orderItem.length - 1].updateSize(activeSize[0].value);
+    orderItem[orderItem.length - 1].getTotal();
+    $("#total").text(orderItem[orderItem.length - 1].getTotal());
   });
 
   //event listener for change in crust type
   $("[name=crustradio]").on("change", () => {
     let activeCrust = $("[name=crustradio]:checked");
-    orderItem[orderItem.length-1].updateCrust(activeCrust[0].value);
-    orderItem[orderItem.length-1].getTotal();
-    $("#total").text(orderItem[orderItem.length-1].getTotal());
+    orderItem[orderItem.length - 1].updateCrust(activeCrust[0].value);
+    orderItem[orderItem.length - 1].getTotal();
+    $("#total").text(orderItem[orderItem.length - 1].getTotal());
   });
   //get checkbox values
   const getCheckboxValues = (selectedCheckboxes) => {
@@ -196,9 +204,9 @@ $(() => {
     let quantityInput = $("#qty");
     let quantity = parseInt(quantityInput.val()) + 1;
     quantityInput.val(quantity);
-    orderItem[orderItem.length-1].updateQuantity(quantity);
-    orderItem[orderItem.length-1].getTotal();
-    $("#total").text(orderItem[orderItem.length-1].getTotal());
+    orderItem[orderItem.length - 1].updateQuantity(quantity);
+    orderItem[orderItem.length - 1].getTotal();
+    $("#total").text(orderItem[orderItem.length - 1].getTotal());
     console.log(quantity);
   });
   //Reduce quantity
@@ -210,30 +218,47 @@ $(() => {
       quantity -= 1;
       quantityInput.val(quantity);
       console.log(quantity);
-      orderItem[orderItem.length-1].updateQuantity(quantity);
-      orderItem[orderItem.length-1].getTotal();
-      $("#total").text(orderItem[orderItem.length-1].getTotal());
+      orderItem[orderItem.length - 1].updateQuantity(quantity);
+      orderItem[orderItem.length - 1].getTotal();
+      $("#total").text(orderItem[orderItem.length - 1].getTotal());
       console.log(quantity);
     } else {
       return;
     }
   });
 
+
+  let getLocalStorageState=()=>{
+    shoppingCart = JSON.parse(localStorage.getItem("cart"));
+    console.log(shoppingCart);
+    if (shoppingCart!== null) {
+      return shoppingCart;
+    }
+    else 
+    return [];
+
+  }
   //Receive form input
-$("#form-order").on("submit",(e)=>{
+  $("#form-order").on("submit", (e) => {
+    e.preventDefault();
+    newCart=getLocalStorageState();
+    console.log(newCart);
+    newCart.push(orderItem[orderItem.length - 1]);
+    console.log(newCart);
+    // cart.push(orderItem[orderItem.length - 1]);
+    cart=newCart;
+    // cart.push(newCart);
+    //update cart items count display
 
-  e.preventDefault();
-  cart.push(orderItem[orderItem.length-1]);
-  //update cart items count display
-
-  $("#items-count").text(cart.length);
-  //add to cart array
-  localStorage.setItem("cart",JSON.stringify(cart));
-  // localStorage.setItem("cart",cart.toString());
-  console.log(cart[0]);
-  $("#order-modal").modal('hide');
-  alert("Item added successfully to cart");
-});
+    $("#items-count").text(cart.length);
+    //add to cart array
+    localStorage.setItem("cart", JSON.stringify(cart));
+    // localStorage.setItem("cart",cart.toString());
+    console.log(cart[0]);
+    console.log(cart)
+    $("#order-modal").modal("hide");
+    alert("Item added successfully to cart");
+  });
   //listen for changes in topping checkboxes
   $(".toppings-check").on("change", (e) => {
     //get toppings selection
@@ -241,23 +266,25 @@ $("#form-order").on("submit",(e)=>{
     let crust = $("[name=crustradio]:checked").val();
     let size = $("[name=sizeradio]:checked").val();
     toppingsSelection = getCheckboxValues(toppings);
-    orderItem[orderItem.length-1].updateToppings(toppingsSelection);
-    $("#total").text(orderItem[orderItem.length-1].getTotal());
+    orderItem[orderItem.length - 1].updateToppings(toppingsSelection);
+    $("#total").text(orderItem[orderItem.length - 1].getTotal());
     console.log(toppingsSelection);
     console.log(crust);
     console.log(size);
   });
   let orderItemCount = 0;
-  
+
   $("#order-now").on("click", () => {
     orderItemCount += 1;
-    orderItem.push(new Order("large", ["pepperoni", "chicken-bbq"], "crispy", 1));
-    console.log(orderItem[orderItem.length-1]);
-    console.log(orderItem[orderItem.length-1].getTotal());
-    orderItem[orderItem.length-1].getToppingsTotal();
-    orderItem[orderItem.length-1].getCrustTotal();
+    orderItem.push(
+      new Order("large", ["pepperoni", "chicken-bbq"], "crispy", 1)
+    );
+    console.log(orderItem[orderItem.length - 1]);
+    console.log(orderItem[orderItem.length - 1].getTotal());
+    orderItem[orderItem.length - 1].getToppingsTotal();
+    orderItem[orderItem.length - 1].getCrustTotal();
     //set the total button value
-    $("#total").text(orderItem[orderItem.length-1].getTotal());
+    $("#total").text(orderItem[orderItem.length - 1].getTotal());
   });
 
   //update the price per the number of pizzas
@@ -266,5 +293,6 @@ $("#form-order").on("submit",(e)=>{
   });
 
   // Update order total displayed
+
   // const updateOrderTotalElement = () => {};
 });
