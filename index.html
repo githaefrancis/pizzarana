@@ -49,7 +49,7 @@
                 href="#"
                 >Home</a
               >
-              <a class="nav-link mx-lg-5 text-black" href="#">Menu</a>
+              <a class="nav-link mx-lg-5 text-black" href="#pizza-card">Menu</a>
               <a class="nav-link mx-lg-5 text-black" href="#">Contact</a>
               <!-- <a class="nav-link mx-lg-5 text-black" href="#">About</a> -->
             </div>
@@ -70,9 +70,9 @@
             we have the pizza you need. <br />Sit back and let us pizza <br />
             your way.
           </p>
-          <button class="btn btn-danger btn-lg btn-outline-dark text-white">
+          <a href="#pizza-card" class="btn btn-danger btn-lg btn-outline-dark text-white mx-auto">
             Order Now
-          </button>
+          </a>
         </div>
         <div>
           <img class="img-fluid" src="./img/pizza.png" alt="" />
@@ -164,6 +164,12 @@
             ><span> Medium: <span class="badge bg-dark">800</span></span
             ><span> Small: <span class="badge bg-dark">550</span></span>
           </p>
+          <a href="./cart.html"
+          class="btn btn-dark btn-md text-white"
+          id="go-to-cart"
+        >
+          Go to Cart <span id="items-count-button"></span>
+        </a>
           <button
             class="btn btn-success btn-lg text-white"
             data-bs-toggle="modal"

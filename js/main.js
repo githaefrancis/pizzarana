@@ -20,7 +20,7 @@ const toppingPrices = [
   { name: "mozzarella", price: { large: 80, medium: 60, small: 40 } },
 ];
 
-function Order(flavor,size, toppings, crust, quantity) {
+function Order(flavor, size, toppings, crust, quantity) {
   this.size = size;
   this.toppings = toppings;
   this.crust = crust;
@@ -29,7 +29,7 @@ function Order(flavor,size, toppings, crust, quantity) {
   this.basePrice;
   this.toppingsTotal = 0;
   this.crustTotal = 0;
-  this.flavor=flavor;
+  this.flavor = flavor;
 }
 
 //method to update the size of pizza
@@ -118,10 +118,12 @@ $(() => {
   if (shoppingCart !== null) {
     $("#items-count").text(shoppingCart.length);
     $("#items-count-mobile").text(shoppingCart.length);
+    $("#items-count-button").text(shoppingCart.length);
+  } else {
+    $("#items-count").text(0);
+    $("#items-count-mobile").text(0);
+    $("#items-count-button").text(0);
   }
-  else 
-  $("#items-count").text(0);
-
   //get toppings prices
   let getToppingsPrices = (size) => {
     let toppingPricesPerSize = toppingPrices.map((item) => {
@@ -229,26 +231,22 @@ $(() => {
     }
   });
 
-
-  let getLocalStorageState=()=>{
+  let getLocalStorageState = () => {
     shoppingCart = JSON.parse(localStorage.getItem("cart"));
     console.log(shoppingCart);
-    if (shoppingCart!== null) {
+    if (shoppingCart !== null) {
       return shoppingCart;
-    }
-    else 
-    return [];
-
-  }
+    } else return [];
+  };
   //Receive form input
   $("#form-order").on("submit", (e) => {
     e.preventDefault();
-    newCart=getLocalStorageState();
+    newCart = getLocalStorageState();
     console.log(newCart);
     newCart.push(orderItem[orderItem.length - 1]);
     console.log(newCart);
     // cart.push(orderItem[orderItem.length - 1]);
-    cart=newCart;
+    cart = newCart;
     // cart.push(newCart);
     //update cart items count display
 
@@ -257,7 +255,7 @@ $(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
     // localStorage.setItem("cart",cart.toString());
     console.log(cart[0]);
-    console.log(cart)
+    console.log(cart);
     $("#order-modal").modal("hide");
     alert("Item added successfully to cart");
   });
@@ -278,10 +276,16 @@ $(() => {
   let selectedPizza;
   $("#order-now").on("click", () => {
     orderItemCount += 1;
-    selectedPizza=localStorage.getItem("activePizza");
+    selectedPizza = localStorage.getItem("activePizza");
     $("#order-modal-title").append(selectedPizza);
     orderItem.push(
-      new Order(selectedPizza,"large", ["pepperoni", "chicken-bbq"], "crispy", 1)
+      new Order(
+        selectedPizza,
+        "large",
+        ["pepperoni", "chicken-bbq"],
+        "crispy",
+        1
+      )
     );
 
     console.log(orderItem[orderItem.length - 1]);
